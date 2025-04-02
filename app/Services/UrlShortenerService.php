@@ -43,6 +43,7 @@ class UrlShortenerService {
         // Create and return the URL record
         return Url::create([
             'original_url' => $originalUrl,
+            'user_id' => auth()?->user()?->id,
             'slug' => $slug,
         ]);
     }
