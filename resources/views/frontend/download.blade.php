@@ -51,7 +51,7 @@
                         <h2 class="fw-bold mb-4">Video Tutorial</h2>
                         <p>Watch our video tutorial for a quick guide on installation and how to use the URL shortener:</p>
                         <div class="ratio ratio-16x9 mt-3">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="URL Shortener Extension Tutorial" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/frTfeVlB4H4" title="URL Shortener Extension Tutorial" allowfullscreen></iframe>
                         </div>
                     </div>
 
