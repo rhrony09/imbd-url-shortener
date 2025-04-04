@@ -20,10 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/download', [FrontendController::class, 'download'])->name('download');
+Route::get('/terms-of-service', [FrontendController::class, 'terms_of_service'])->name('terms');
+Route::get('/privacy-policy', [FrontendController::class, 'privacy_policy'])->name('privacy');
 
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Admin Panel
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
@@ -42,15 +43,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     //settings
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingsController::class, 'settings_update'])->name('settings.update');
-
-    //debug
-    Route::get('debug', [HomeController::class, 'debug']);
 });
 
 //url management
 Route::post('/urls', [UrlController::class, 'store'])->name('urls.store');
 Route::get('/urls/{id}/details', [UrlController::class, 'getUrlDetails'])->name('urls.details');
 Route::delete('/urls/{id}', [UrlController::class, 'delete'])->name('urls.delete');
-Route::get('/dashboard/stats', [UrlController::class, 'getDashboardStats'])->name('dashboard.stats');
 
 Route::get('{slug}', [UrlController::class, 'redirect'])->name('redirect');
