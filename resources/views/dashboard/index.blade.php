@@ -13,7 +13,7 @@
                         <th>Short URL</th>
                         <th>Slug</th>
                         <th>Clicks</th>
-                        <th>Created</th>
+                        <th>Created By</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -23,8 +23,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="url-favicon me-2">
-                                        <img src="https://www.google.com/s2/favicons?domain={{ parse_url($url->original_url, PHP_URL_HOST) }}"
-                                            alt="favicon" width="16" height="16">
+                                        <img src="https://www.google.com/s2/favicons?domain={{ parse_url($url->original_url, PHP_URL_HOST) }}" alt="favicon" width="16" height="16">
                                     </div>
                                     <div class="text-truncate" style="max-width: 250px;" title="{{ $url->original_url }}">
                                         <a href="{{ $url->original_url }}" target="_blank" class="text-decoration-none">
@@ -35,31 +34,35 @@
                             </td>
                             <td>
                                 <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" value="{{ route('redirect', $url->slug) }}"
-                                        id="url-{{ $url->id }}" readonly>
-                                    <button class="btn brand-btn copy-btn" type="button"
-                                        data-clipboard-target="#url-{{ $url->id }}"><i
-                                            class="bi bi-clipboard"></i></button>
+                                    <input type="text" class="form-control" value="{{ route('redirect', $url->slug) }}" id="url-{{ $url->id }}" readonly>
+                                    <button class="btn brand-btn copy-btn" type="button" data-clipboard-target="#url-{{ $url->id }}"><i class="bi bi-clipboard"></i></button>
                                 </div>
                             </td>
                             <td><code>{{ $url->slug }}</code></td>
                             <td>
                                 <span class="badge bg-primary rounded-pill">{{ $url->clicks }}</span>
                             </td>
-                            <td>{{ $url->created_at->format('M d, Y') }}</td>
                             <td>
-                                <a href="{{ route('redirect', $url->slug) }}" target="_blank"
-                                    class="btn btn-sm btn-outline-secondary" title="Open URL"><i
-                                        class="bi bi-box-arrow-up-right"></i></a>
-                                <button type="button" class="btn btn-sm btn-outline-secondary view-details"
-                                    data-url-id="{{ $url->id }}" title="View Details"><i
-                                        class="bi bi-bar-chart-line"></i></button>
-                                <form action="{{ route('urls.delete', $url->id) }}" method="POST"
-                                    class="d-inline delete-url-form" id="delete-form-{{ $url->id }}">
+                                @if ($url->user)
+                                    <div class="user-details">
+                                        <img src="{{ $url->user->profile_picture }}" alt="{{ $url->user->name }}">
+                                        <div class="user-info">
+                                            <p>{{ $url->user->name }}</p>
+                                            <p>{{ $url->created_at->format('M d, Y') }}</p>
+                                        </div>
+                                    </div>
+                                @else
+                                    {{ $url->created_at->format('M d, Y') }}
+                                @endif
+
+                            </td>
+                            <td>
+                                <a href="{{ route('redirect', $url->slug) }}" target="_blank" class="btn btn-sm btn-outline-secondary" title="Open URL"><i class="bi bi-box-arrow-up-right"></i></a>
+                                <button type="button" class="btn btn-sm btn-outline-secondary view-details" data-url-id="{{ $url->id }}" title="View Details"><i class="bi bi-bar-chart-line"></i></button>
+                                <form action="{{ route('urls.delete', $url->id) }}" method="POST" class="d-inline delete-url-form" id="delete-form-{{ $url->id }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete URL"><i
-                                            class="bi bi-trash"></i></button>
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete URL"><i class="bi bi-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -91,8 +94,7 @@
                                     <h6 class="fw-bold">Original URL</h6>
                                     <div class="d-flex align-items-center mt-2">
                                         <div class="url-favicon me-2">
-                                            <img src="" alt="favicon" width="16" height="16"
-                                                id="detail-favicon">
+                                            <img src="" alt="favicon" width="16" height="16" id="detail-favicon">
                                         </div>
                                         <a href="#" target="_blank" id="detail-original-url" class="text-break"></a>
                                     </div>
@@ -101,8 +103,7 @@
                                     <h6 class="fw-bold">Short URL</h6>
                                     <div class="input-group mt-2">
                                         <input type="text" class="form-control" id="detail-short-url" readonly>
-                                        <button class="btn brand-btn copy-btn" type="button"
-                                            data-clipboard-target="#detail-short-url">
+                                        <button class="btn brand-btn copy-btn" type="button" data-clipboard-target="#detail-short-url">
                                             <i class="fa-regular fa-clipboard"></i>
                                         </button>
                                     </div>
@@ -146,8 +147,7 @@
     </div>
 
     <!-- Delete Confirmation Modal -->
-    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -169,6 +169,11 @@
 
 @push('style')
     <style>
+        .user-details img {
+            width: 35px;
+            height: 35px;
+        }
+
         .feature-icon {
             display: inline-flex;
             align-items: center;
