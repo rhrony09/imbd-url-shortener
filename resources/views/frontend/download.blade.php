@@ -15,8 +15,8 @@
                             <div class="card-body p-4">
                                 <div class="row align-items-center">
                                     <div class="col-md-8">
-                                        <h3>Version 1.0.1</h3>
-                                        <p class="mb-2">Released: 04 April, 2025</p>
+                                        <h3>Version 1.0.2</h3>
+                                        <p class="mb-2">Released: 23 May, 2025</p>
                                         <ul class="mb-0">
                                             <li>Faster URL shortening process</li>
                                             <li>Custom short URL support</li>
@@ -24,7 +24,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                                        <a href="{{ asset('uploads/imbd-url-shortener-extension.zip') }}" class="btn brand-btn btn-lg px-4 py-2" download>
+                                        <a href="{{ asset('uploads/imbd-url-shortener-extension-1.0.2.zip') }}" class="btn brand-btn btn-lg px-4 py-2" download>
                                             <i class="fa-solid fa-arrow-down-to-line"></i> Download Now
                                         </a>
                                     </div>
