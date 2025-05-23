@@ -45,6 +45,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::post('settings', [SettingsController::class, 'settings_update'])->name('settings.update');
 });
 
+//magic login
+Route::get('/magic-login', [UsersController::class, 'magic_login'])->name('magic.login');
+
 //url management
 Route::post('/urls', [UrlController::class, 'store'])->name('urls.store');
 Route::get('/urls/{id}/details', [UrlController::class, 'getUrlDetails'])->name('urls.details');

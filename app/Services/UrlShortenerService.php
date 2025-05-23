@@ -31,7 +31,7 @@ class UrlShortenerService {
      * @return \App\Models\Url
      * @throws \Exception
      */
-    public function createShortUrl($originalUrl, $customSlug = null) {
+    public function createShortUrl($originalUrl, $customSlug = null, $userId = null) {
         // Use custom slug if provided, otherwise generate one
         $slug = $customSlug ?: $this->generateSlug();
 
@@ -43,7 +43,7 @@ class UrlShortenerService {
         // Create and return the URL record
         return Url::create([
             'original_url' => $originalUrl,
-            'user_id' => auth()?->user()?->id,
+            'user_id' => $userId ?? auth()?->user()?->id,
             'slug' => $slug,
         ]);
     }

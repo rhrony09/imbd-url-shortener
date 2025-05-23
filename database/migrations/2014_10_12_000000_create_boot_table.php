@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('username')->nullable();
+            $table->string('magic_token')->nullable();
             $table->timestamp('last_seen')->nullable();
             $table->foreignId('role_id')->constrained();
             $table->rememberToken();

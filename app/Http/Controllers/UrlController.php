@@ -7,6 +7,7 @@ use App\Services\UrlShortenerService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class UrlController extends Controller {
@@ -98,7 +99,7 @@ class UrlController extends Controller {
         // Update the URL object with the accurate click count
         $url->clicks = $clickCount;
 
-        // Get clicks data for the last 7 days
+        // Get clicks data for the last 30 days
         $clicksData = $this->getClicksData($url->id);
 
         return response()->json([
@@ -169,7 +170,8 @@ class UrlController extends Controller {
         try {
             $url = $this->urlShortenerService->createShortUrl(
                 $request->original_url,
-                $request->custom_slug
+                $request->custom_slug,
+                $request->user_id
             );
 
             return response()->json([
@@ -260,8 +262,8 @@ class UrlController extends Controller {
         $labels = [];
         $data = [];
 
-        // Generate labels for the last 7 days
-        for ($i = 6; $i >= 0; $i--) {
+        // Generate labels for the last 30 days
+        for ($i = 29; $i >= 0; $i--) {
             $date = Carbon::now()->subDays($i);
             $labels[] = $date->format('M d');
 

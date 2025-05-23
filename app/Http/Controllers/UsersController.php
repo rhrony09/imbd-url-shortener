@@ -11,6 +11,7 @@ use App\Models\User;
 use Image;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller {
 
@@ -102,5 +103,32 @@ class UsersController extends Controller {
     public function user_delete(User $id) {
         $id->delete();
         return back()->with('success', 'User deleted successfully.');
+    }
+
+    public function magic_login(Request $request) {
+        $token = $request->magic_token;
+
+        if (!$token) {
+            return redirect()->route('index')->with('error', 'Token not provided.');
+        }
+
+        $user = User::where('magic_token', $token)->first();
+
+        if (!$user) {
+            return redirect()->route('index')->with('error', 'Invalid token.');
+        }
+
+        $user->update(['magic_token' => null]);
+
+        if (Auth::check()) {
+            if (auth()->id() !== $user->id) {
+                Auth::logout();
+                auth()->login($user);
+            }
+        } else {
+            auth()->login($user);
+        }
+
+        return redirect()->route('dashboard.index');
     }
 }
