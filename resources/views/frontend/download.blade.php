@@ -7,7 +7,7 @@
                 <div class="card-body p-4 p-md-5">
                     <div class="text-center mb-5">
                         <h1 class="fw-bold">URL Shortener Chrome Extension</h1>
-                        <p class="lead text-muted">Shorten any URL with a single click directly from your browser</p>
+                        <p class="lead text-muted">Shorten any URL with a single click directly from your browser - completely ad-free experience</p>
                     </div>
 
                     <div class="mb-5">
@@ -21,11 +21,12 @@
                                             <li>Faster URL shortening process</li>
                                             <li>Custom short URL support</li>
                                             <li>One-click copy to clipboard</li>
+                                            <li>Ad-free experience</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                                        <a href="{{ asset('uploads/imbd-url-shortener-extension-1.0.2.zip') }}" class="btn brand-btn btn-lg px-4 py-2" download>
-                                            <i class="fa-solid fa-arrow-down-to-line"></i> Download Now
+                                        <a href="https://chromewebstore.google.com/detail/imbd-shortener/aekgeabfigddhcgmhnkemmfhcompbobm" class="btn brand-btn btn-lg px-4 py-2" target="_blank">
+                                            <i class="fa-brands fa-chrome"></i> Add to Chrome
                                         </a>
                                     </div>
                                 </div>
@@ -37,22 +38,12 @@
                         <h2 class="fw-bold mb-4">Installation Guide</h2>
                         <p>Follow these simple steps to install our extension:</p>
                         <ol>
-                            <li class="mb-2">Download the extension file by clicking the button above</li>
-                            <li class="mb-2">Extract the downloaded <code>.zip</code> file</li>
-                            <li class="mb-2">Open Chrome and navigate to <code>chrome://extensions</code></li>
-                            <li class="mb-2">Enable "Developer mode" in the top-right corner</li>
-                            <li class="mb-2">Drag and drop the extracted folder into the extensions page</li>
-                            <li class="mb-2">Click "Add extension" if prompted</li>
+                            <li class="mb-2">Click the "Add to Chrome" button above to visit the Chrome Web Store</li>
+                            <li class="mb-2">Click "Add to Chrome" on the extension page</li>
+                            <li class="mb-2">Click "Add extension" when prompted by Chrome</li>
                             <li class="mb-2">The URL shortener icon will appear in your browser toolbar</li>
+                            <li class="mb-2">Pin the extension to your toolbar for easy access</li>
                         </ol>
-                    </div>
-
-                    <div class="mb-5">
-                        <h2 class="fw-bold mb-4">Video Tutorial</h2>
-                        <p>Watch our video tutorial for a quick guide on installation and how to use the URL shortener:</p>
-                        <div class="ratio ratio-16x9 mt-3">
-                            <iframe src="https://www.youtube.com/embed/frTfeVlB4H4" title="URL Shortener Extension Tutorial" allowfullscreen></iframe>
-                        </div>
                     </div>
 
                     <div class="my-4">
@@ -66,8 +57,8 @@
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Yes, our URL shortener extension is completely free to use. You can shorten as many
-                                        URLs as you like without any limitations.
+                                        Yes, our URL shortener extension is completely free to use with an ad-free experience. You can shorten as many
+                                        URLs as you like without any limitations or annoying advertisements.
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +115,7 @@
                                         <i class="fa-solid fa-download fa-2x" style="color: var(--rh-primary-color);"></i>
                                     </div>
                                     <h4>1. Install</h4>
-                                    <p class="text-muted">Download and add our extension to your browser</p>
+                                    <p class="text-muted">Add our extension to your browser from the Chrome Web Store</p>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-4 mb-md-0">

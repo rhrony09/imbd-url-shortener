@@ -7,7 +7,7 @@
                 <div class="card-body p-lg-5 p-3">
                     <div class="text-center">
                         <h1 class="display-5 fw-bold">Share Links, <span class="text-gradient">Simplified</span></h1>
-                        <p class="lead text-muted">Create short, memorable links in seconds — no account required.</p>
+                        <p class="lead text-muted">Create short, memorable links in seconds — completely ad-free experience.</p>
                     </div>
 
                     <!-- Success Message -->
