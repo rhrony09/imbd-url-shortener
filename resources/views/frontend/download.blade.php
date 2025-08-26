@@ -15,8 +15,8 @@
                             <div class="card-body p-4">
                                 <div class="row align-items-center">
                                     <div class="col-md-8">
-                                        <h3>Version 1.0.2</h3>
-                                        <p class="mb-2">Released: 23 May, 2025</p>
+                                        <h3>Version 1.0.3</h3>
+                                        <p class="mb-2">Released: 27 August, 2025</p>
                                         <ul class="mb-0">
                                             <li>Faster URL shortening process</li>
                                             <li>Custom short URL support</li>

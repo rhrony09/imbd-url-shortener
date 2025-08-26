@@ -6,7 +6,7 @@
             <div class="h4 m-0">All Shortened URLs</div>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped align-middle datatable-no-ordering">
+            <table class="table table-bordered table-striped align-middle">
                 <thead>
                     <tr>
                         <th>Original URL</th>
@@ -69,6 +69,18 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $urls->links() }}
+            </div>
+
+            <!-- Total Count -->
+            <div class="d-flex justify-content-center mt-3">
+                <div class="text-muted">
+                    <small>Total Shortened URLs: <strong>{{ $urls->total() }}</strong></small>
+                </div>
+            </div>
         </div>
     </div>
 

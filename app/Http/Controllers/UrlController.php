@@ -37,11 +37,11 @@ class UrlController extends Controller {
     public function dashboard() {
         if (in_array(auth()->user()->role_id, [1, 2])) {
             $data = [
-                "urls" => Url::latest()->get()
+                "urls" => Url::latest()->paginate(20)
             ];
         } else {
             $data = [
-                "urls" => Url::where('user_id', auth()->user()->id)->latest()->get()
+                "urls" => Url::where('user_id', auth()->user()->id)->latest()->paginate(20)
             ];
         }
 
