@@ -89,4 +89,8 @@ class User extends Authenticatable {
     public static function allUsers() {
         return User::where('role_id', 4)->get();
     }
+
+    public function urls() {
+        return $this->hasMany(Url::class, 'user_id', 'id');
+    }
 }

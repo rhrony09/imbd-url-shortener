@@ -18,6 +18,7 @@
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Role</th>
+                        <th>URLs</th>
                         @if (auth()->user()->role_id == 1)
                             <th>Action</th>
                         @endif
@@ -39,6 +40,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->mobile }}</td>
                             <td>{{ $user->role->name }}</td>
+                            <td><span class="badge bg-primary">{{ $user->urls_count }}</span></td>
                             @if (auth()->user()->role_id == 1)
                                 <td>
                                     <a href="{{ route('dashboard.users.show', $user->id) }}" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View User"><i class="fa fa-eye"></i></a>
@@ -67,6 +69,7 @@
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Role</th>
+                        <th>URLs</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -86,6 +89,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->mobile }}</td>
                             <td>{{ $user->role->name }}</td>
+                            <td><span class="badge bg-primary">{{ $user->urls_count }}</span></td>
                             <td>
                                 <a href="{{ route('dashboard.users.show', $user->id) }}" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View User"><i class="fa fa-eye"></i></a>
                                 <button class="btn btn-danger btn-sm user-delete" data-id="{{ $user->id }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete User"><i class="fa fa-trash"></i></button>

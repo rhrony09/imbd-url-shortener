@@ -19,7 +19,7 @@ class UsersController extends Controller {
         if (!in_array(auth()->user()->role->id, [1, 2])) {
             abort(403, 'Unauthorized.');
         }
-        $users = User::all();
+        $users = User::withCount('urls')->get();
         return view('dashboard.users.index', [
             'admins' => $users->whereIn('role_id', ['1', '2']),
             'users' => $users->where('role_id', 3),
